@@ -1,72 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <!-- Primary Meta Tags -->
-<title>The Alternate Effect | Multiverse & Speculative History Archive</title>
-<meta name="title" content="The Alternate Effect | Multiverse & Speculative History Archive" />
-<meta name="description" content="Explore alternate history timelines, deep-time catastrophes, and speculative scenarios with the interactive Timeline Weaver." />
-
-<!-- Open Graph / Facebook / Discord -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://alternateeffect.netlify.app/" />
-<meta property="og:title" content="The Alternate Effect | Timeline Divergence Engine" />
-<meta property="og:description" content="What if history snapped? Simulate downstream cascades and vote on pivotal historical forks." />
-<meta property="og:image" content="https://i.ytimg.com/vi/ncTdV4wZCUo/maxresdefault.jpg" />
-
-<!-- Twitter / X Card -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://alternateeffect.netlify.app/" />
-<meta property="twitter:title" content="The Alternate Effect | Timeline Divergence Engine" />
-<meta property="twitter:description" content="Simulate alternate history domino effects and submit scenario pitches." />
-<meta property="twitter:image" content="https://i.ytimg.com/vi/ncTdV4wZCUo/maxresdefault.jpg" />
-
-<!-- Retro Terminal Favicon (SVG inline) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d14'/><text y='68' x='50' font-size='50' font-family='monospace' font-weight='bold' fill='%2300f0ff' text-anchor='middle'>ΔE</text></svg>">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Alternate Effect | Multiverse & Speculative History Archive</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Explore alternate history timelines, deep-time catastrophes, and speculative scenarios with the interactive Timeline Weaver." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alternateeffect.netlify.app/" />
+  <meta property="og:title" content="The Alternate Effect | Timeline Divergence Engine" />
+  <meta property="og:description" content="What if history snapped? Simulate downstream cascades and vote on pivotal historical forks." />
+  <meta property="og:image" content="https://i.ytimg.com/vi/ncTdV4wZCUo/hqdefault.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d14'/><text y='68' x='50' font-size='50' font-family='monospace' font-weight='bold' fill='%2300f0ff' text-anchor='middle'>ΔE</text></svg>">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
   <script>
-    function openVideoModal(videoId) {
-  const modal = document.getElementById('videoModal');
-  const iframe = document.getElementById('videoIframe');
-  
-  // Load YouTube embed with autoplay enabled
-  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-  
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-function closeVideoModal() {
-  const modal = document.getElementById('videoModal');
-  const iframe = document.getElementById('videoIframe');
-  
-  // Stop video playback by clearing src
-  iframe.src = '';
-  
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-  document.body.style.overflow = ''; // Restore scrolling
-}
-
-// Close modal on outside backdrop click
-document.getElementById('videoModal').addEventListener('click', (e) => {
-  if (e.target.id === 'videoModal') {
-    closeVideoModal();
-  }
-});
-
-// Close modal on 'Escape' key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeVideoModal();
-  }
-});
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -91,8 +47,8 @@ document.addEventListener('keydown', (e) => {
   </script>
   <style>
     @keyframes pulse-glow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.7; }
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.6; }
     }
     .glow-bg {
       animation: pulse-glow 6s infinite ease-in-out;
@@ -107,13 +63,13 @@ document.addEventListener('keydown', (e) => {
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans min-h-screen retro-grid flex flex-col selection:bg-brand-cyan selection:text-black">
 
-  <!-- Glow Background Accents -->
+  <!-- Background Ambient Glow -->
   <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
     <div class="absolute -top-40 left-1/4 w-96 h-96 bg-brand-cyan/15 rounded-full blur-3xl glow-bg"></div>
     <div class="absolute top-1/2 -right-40 w-96 h-96 bg-brand-purple/15 rounded-full blur-3xl glow-bg" style="animation-delay: 3s;"></div>
   </div>
 
-  <!-- Header / Navigation -->
+  <!-- Navigation -->
   <header class="relative z-10 border-b border-brand-border/80 bg-brand-dark/80 backdrop-blur-md sticky top-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -129,8 +85,8 @@ document.addEventListener('keydown', (e) => {
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
         <a href="#simulator" class="text-slate-300 hover:text-brand-cyan transition-colors">Fork Simulator</a>
         <a href="#debates" class="text-slate-300 hover:text-brand-cyan transition-colors">Chrono-Debates</a>
-        <a href="#episodes" class="text-slate-300 hover:text-brand-cyan transition-colors">Episodes & Vault</a>
-        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" class="px-3.5 py-1.5 rounded-full bg-red-600/90 hover:bg-red-500 text-white font-semibold transition-all flex items-center space-x-1.5 shadow-lg shadow-red-600/20">
+        <a href="#episodes" class="text-slate-300 hover:text-brand-cyan transition-colors">Episodes</a>
+        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-red-600/90 hover:bg-red-500 text-white font-semibold transition-all flex items-center space-x-1.5 shadow-lg shadow-red-600/20">
           <i data-lucide="youtube" class="w-4 h-4"></i>
           <span>Subscribe</span>
         </a>
@@ -143,14 +99,14 @@ document.addEventListener('keydown', (e) => {
     <section class="max-w-5xl mx-auto px-4 pt-16 pb-12 text-center">
       <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-xs font-mono mb-6">
         <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
-        <span>TEMPORAL STATUS: MULTIPLE DIVERGENCES DETECTED</span>
+        <span>TEMPORAL STATUS: ACTIVE DIVERGENCES</span>
       </div>
       <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
         History is fragile.<br />
         <span class="bg-gradient-to-r from-brand-cyan via-purple-400 to-pink-500 bg-clip-text text-transparent">What happens when the thread snaps?</span>
       </h1>
       <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-        Investigating alternate histories, deep-time geological turning points, and the domino effects that could have reshaped civilization.
+        Investigating alternate histories, deep-time geological turning points, and the cascading domino effects that could have reshaped our world.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="#simulator" class="px-6 py-3 rounded-lg bg-brand-cyan text-black font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-brand-cyan/25 flex items-center space-x-2">
@@ -164,7 +120,7 @@ document.addEventListener('keydown', (e) => {
       </div>
     </section>
 
-    <!-- SECTION 1: INTERACTIVE TIMELINE FORK SIMULATOR -->
+    <!-- SECTION 1: TIMELINE FORK SIMULATOR -->
     <section id="simulator" class="max-w-5xl mx-auto px-4 py-12 scroll-mt-20">
       <div class="border border-brand-border bg-brand-surface/80 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-2xl relative overflow-hidden">
         <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
@@ -182,7 +138,7 @@ document.addEventListener('keydown', (e) => {
           </span>
         </div>
 
-        <!-- Scenario Selector Chips -->
+        <!-- Scenario Selector Buttons -->
         <div class="flex flex-wrap gap-2 mb-6" id="scenarioChips"></div>
 
         <!-- Dynamic Output Container -->
@@ -192,7 +148,7 @@ document.addEventListener('keydown', (e) => {
               <i data-lucide="alert-triangle" class="w-4 h-4"></i>
               <span id="divergencePoint">Divergence Point</span>
             </div>
-            <h3 id="scenarioTitle" class="text-2xl font-bold text-white">Select a scenario</h3>
+            <h3 id="scenarioTitle" class="text-2xl font-bold text-white">Loading...</h3>
             <p id="scenarioDesc" class="text-slate-300 text-sm leading-relaxed"></p>
 
             <div class="pt-2">
@@ -201,7 +157,7 @@ document.addEventListener('keydown', (e) => {
             </div>
           </div>
 
-          <!-- Meters & Metric Impacts -->
+          <!-- Metrics -->
           <div class="space-y-4 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6 flex flex-col justify-center">
             <h4 class="text-xs font-mono text-slate-400 uppercase">// Projected Deviations</h4>
             <div>
@@ -224,7 +180,7 @@ document.addEventListener('keydown', (e) => {
             </div>
             <div>
               <div class="flex justify-between text-xs font-mono mb-1">
-                <span>Global Population Impact</span>
+                <span>Population Impact</span>
                 <span id="metricPop" class="text-brand-amber">--</span>
               </div>
               <div class="w-full bg-slate-800 rounded-full h-2">
@@ -236,37 +192,37 @@ document.addEventListener('keydown', (e) => {
       </div>
     </section>
 
-    <!-- SECTION 2: CHRONO-DEBATE & COMMUNITY VOTE -->
+    <!-- SECTION 2: CHRONO-DEBATE & PITCH TRANSMISSION -->
     <section id="debates" class="max-w-5xl mx-auto px-4 py-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- Interactive Poll Widget -->
+        <!-- Poll Widget -->
         <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur">
           <div class="flex items-center space-x-2 text-brand-cyan font-mono text-xs mb-2">
             <i data-lucide="vote" class="w-4 h-4"></i>
             <span>COMMUNITY DIVERGENCE POLL #42</span>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">If China had not burnt the Treasure Fleets in 1433, who colonizes the Americas first?</h3>
-          <p class="text-xs text-slate-400 mb-4">Cast your vote to see real-time community probability metrics.</p>
+          <h3 class="text-lg font-bold text-white mb-2">If China had not scuttled the Treasure Fleets in 1433, who colonizes the Americas first?</h3>
+          <p class="text-xs text-slate-400 mb-4">Cast your vote to view community probability metrics.</p>
 
-          <div class="space-y-2.5" id="pollOptions">
-            <button onclick="castVote(0)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+          <div class="space-y-2.5">
+            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
               <span>Ming Dynasty via Pacific Currents</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll0-pct">48%</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold">48%</span>
             </button>
-            <button onclick="castVote(1)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
-              <span>Western Europe (Historical Timeline)</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll1-pct">36%</span>
+            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+              <span>Western Europe (Historical Baseline)</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold">36%</span>
             </button>
-            <button onclick="castVote(2)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
-              <span>Concurrent Split / Early Pacific Trade Network</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll2-pct">16%</span>
+            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+              <span>Concurrent Split / Early Pacific Trade</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold">16%</span>
             </button>
           </div>
-          <p id="voteConfirmation" class="text-xs text-emerald-400 font-mono mt-3 hidden">✓ Vote logged. Live consensus updated.</p>
+          <p id="voteConfirmation" class="text-xs text-emerald-400 font-mono mt-3 hidden">✓ Vote logged into consensus model.</p>
         </div>
 
-        <!-- Creator Scenario Suggestion Box -->
+        <!-- Scenario Pitch Form -->
         <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur flex flex-col justify-between">
           <div>
             <div class="flex items-center space-x-2 text-brand-purple font-mono text-xs mb-2">
@@ -274,85 +230,111 @@ document.addEventListener('keydown', (e) => {
               <span>TRANSMIT A TIMELINE PROMPT</span>
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Pitch the Next Video Scenario</h3>
-            <p class="text-xs text-slate-400 mb-4">Have an alternate history fork or speculative catastrophe theory? Submit your premise to be covered in an upcoming episode.</p>
+            <p class="text-xs text-slate-400 mb-4">Have an alternate history fork or speculative theory? Transmit it to the archive.</p>
             <textarea id="scenarioPitch" rows="3" placeholder="e.g., What if the Library of Alexandria survived with full archives intact?" class="w-full p-3 bg-brand-dark border border-brand-border rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-purple resize-none"></textarea>
           </div>
-          <button onclick="submitPitch()" class="mt-4 w-full py-2.5 rounded-lg bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-semibold text-sm text-white transition-all shadow-md">
+          <button id="pitchBtn" onclick="submitPitch()" class="mt-4 w-full py-2.5 rounded-lg bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-semibold text-sm text-white transition-all shadow-md">
             Transmit Proposal
           </button>
-          <p id="pitchMsg" class="text-xs text-brand-cyan font-mono mt-2 text-center hidden">Transmission received and archived in the queue!</p>
+          <p id="pitchMsg" class="text-xs text-brand-cyan font-mono mt-2 text-center hidden"></p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: RECENT EPISODES & CLASSIFIED DOSSIERS -->
+    <!-- SECTION 3: RECENT EPISODES -->
     <section id="episodes" class="max-w-5xl mx-auto px-4 py-12">
       <div class="flex items-center justify-between mb-8">
         <div>
           <h2 class="text-2xl font-bold text-white">Timeline Archives</h2>
-          <p class="text-xs text-slate-400 font-mono">// EXPLORE LATEST TRANSMISSIONS & DISPATCHES</p>
+          <p class="text-xs text-slate-400 font-mono">// CLICK ANY TRANSMISSION TO PLAY IN THEATER MODE</p>
         </div>
-        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" class="text-xs font-mono text-brand-cyan hover:underline flex items-center space-x-1">
+        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-brand-cyan hover:underline flex items-center space-x-1">
           <span>View All on YouTube</span>
           <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
         <!-- Video Card 1 -->
-        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group">
-          <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Pripyat / Chernobyl Alternate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" />
-            <a href="http://www.youtube.com/watch?v=ncTdV4wZCUo" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-              <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
-              </div>
-            </a>
-            <span class="absolute bottom-2 right-2 bg-black/80 text-white font-mono text-xs px-2 py-0.5 rounded">6:04</span>
+        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
+              <img src="https://i.ytimg.com/vi/ncTdV4wZCUo/hqdefault.jpg" alt="Chernobyl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80" loading="lazy" />
+              <button onclick="openVideoModal('ncTdV4wZCUo')" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all cursor-pointer">
+                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                  <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
+                </div>
+              </button>
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-mono text-brand-cyan uppercase">Nuclear History // Deep Speculation</span>
+              <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-cyan transition-colors">
+                What If Chernobyl Never Happened? — The City That Should Have Been
+              </h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Investigating the Soviet nuclear expansion plan, Pripyat as a mega-atomic hub, and downstream energy grid cascades.
+              </p>
+            </div>
           </div>
-          <div class="p-5">
-            <span class="text-xs font-mono text-brand-cyan uppercase">Nuclear History // Deep Speculation</span>
-            <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-cyan transition-colors">
-              What If Chernobyl Never Happened? — The City That Should Have Been
-            </h4>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Investigating the Soviet nuclear expansion plan, the trajectory of Pripyat as a mega-atomic hub, and the butterfly effects on the USSR's energy grid.
-            </p>
-            <a href="http://www.youtube.com/watch?v=ncTdV4wZCUo" target="_blank" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-300 hover:text-white">
-              <span>Watch on YouTube</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
+          <div class="p-5 pt-0">
+            <button onclick="openVideoModal('ncTdV4wZCUo')" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-brand-cyan hover:underline cursor-pointer">
+              <span>Play Video</span>
+              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
         </div>
 
         <!-- Video Card 2 -->
-        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group">
-          <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Treasure Fleets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" />
-            <a href="http://www.youtube.com/watch?v=9Tdubw0POa8" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-              <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
-              </div>
-            </a>
-            <span class="absolute bottom-2 right-2 bg-black/80 text-white font-mono text-xs px-2 py-0.5 rounded">0:59</span>
+        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
+              <img src="https://i.ytimg.com/vi/9Tdubw0POa8/hqdefault.jpg" alt="Pacific Fleets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80" loading="lazy" />
+              <button onclick="openVideoModal('9Tdubw0POa8')" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all cursor-pointer">
+                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                  <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
+                </div>
+              </button>
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-mono text-brand-purple uppercase">Maritime Fork // 15th Century</span>
+              <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-purple transition-colors">
+                Why China Abandoned the Pacific (And What If They Didn't?)
+              </h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                What if Zheng He's colossal armada was never recalled, and the Ming Dynasty reached the Americas before 1492?
+              </p>
+            </div>
           </div>
-          <div class="p-5">
-            <span class="text-xs font-mono text-brand-purple uppercase">Maritime Fork // 15th Century</span>
-            <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-purple transition-colors">
-              Why China Abandoned the Pacific (And What If They Didn't?)
-            </h4>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Zheng He's colossal armada ruled the Indian Ocean. What if the Haijin edict was never signed, and the Ming Dynasty reached the Americas first?
-            </p>
-            <a href="http://www.youtube.com/watch?v=9Tdubw0POa8" target="_blank" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-300 hover:text-white">
-              <span>Watch on YouTube</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
+          <div class="p-5 pt-0">
+            <button onclick="openVideoModal('9Tdubw0POa8')" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-brand-purple hover:underline cursor-pointer">
+              <span>Play Video</span>
+              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+            </button>
           </div>
         </div>
+
       </div>
     </section>
   </main>
+
+  <!-- Video Lightbox Modal -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl bg-brand-dark border border-brand-border rounded-2xl overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-brand-border bg-brand-surface/80">
+        <span class="text-xs font-mono text-brand-cyan flex items-center space-x-1.5">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          <span>TRANSMISSION PLAYBACK</span>
+        </span>
+        <button onclick="closeVideoModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="relative aspect-video w-full bg-black">
+        <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="relative z-10 border-t border-brand-border bg-brand-dark/95 py-8 text-center text-xs text-slate-500 font-mono">
@@ -362,14 +344,14 @@ document.addEventListener('keydown', (e) => {
     </div>
   </footer>
 
-  <!-- Interactive JavaScript Logic -->
+  <!-- Core JavaScript Logic -->
   <script>
-    // Scenarios Data for Timeline Weaver
+    // Scenarios Data
     const scenarios = [
       {
         id: "chernobyl",
         name: "Pripyat Unbroken",
-        divergence: "April 26, 1986 // Reactor 4 Test Nominal",
+        divergence: "April 26, 1986 // Reactor 4 Nominal",
         title: "The Nuclear Renaissance of Eastern Europe",
         desc: "Without the catastrophic reactor failure, Pripyat grows into the model atomic city with 6 operational reactors. Global nuclear apprehension never reaches late-80s peak levels.",
         cascades: [
@@ -426,15 +408,16 @@ document.addEventListener('keydown', (e) => {
 
     function renderChips() {
       const container = document.getElementById("scenarioChips");
+      if (!container) return;
       container.innerHTML = scenarios.map((s, idx) => `
-        <button onclick="selectScenario('${s.id}')" class="px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${s.id === activeScenario.id ? 'bg-brand-cyan text-black font-bold shadow-md shadow-brand-cyan/20' : 'bg-brand-surface border border-brand-border text-slate-300 hover:border-slate-500'}">
+        <button onclick="selectScenario('${s.id}')" class="px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${s.id === activeScenario.id ? 'bg-brand-cyan text-black font-bold shadow-md shadow-brand-cyan/20' : 'bg-brand-surface border border-brand-border text-slate-300 hover:border-slate-500'}">
           // 0${idx+1}: ${s.name}
         </button>
       `).join('');
     }
 
     function selectScenario(id) {
-      activeScenario = scenarios.find(s => s.id === id);
+      activeScenario = scenarios.find(s => s.id === id) || scenarios[0];
       renderChips();
       updateSimulator();
     }
@@ -462,25 +445,63 @@ document.addEventListener('keydown', (e) => {
       document.getElementById("barPop").style.width = activeScenario.popVal + '%';
     }
 
-    function castVote(optionIndex) {
-      document.getElementById("voteConfirmation").classList.remove("hidden");
+    function castVote(btn) {
+      const confirmEl = document.getElementById("voteConfirmation");
+      if (confirmEl) confirmEl.classList.remove("hidden");
     }
 
     function submitPitch() {
-      const val = document.getElementById("scenarioPitch").value;
-      if (val.trim()) {
-        document.getElementById("pitchMsg").classList.remove("hidden");
-        document.getElementById("scenarioPitch").value = "";
+      const input = document.getElementById("scenarioPitch");
+      const msg = document.getElementById("pitchMsg");
+      if (input && input.value.trim()) {
+        msg.innerText = "✓ Transmission logged into the archive queue!";
+        msg.classList.remove("hidden");
+        input.value = "";
       }
     }
 
-    // Initialize
+    // Modal Handlers
+    function openVideoModal(videoId) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      if (modal && iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      if (modal && iframe) {
+        iframe.src = '';
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Global Event Listeners
     window.addEventListener('DOMContentLoaded', () => {
       renderChips();
       updateSimulator();
-      lucide.createIcons();
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      const modal = document.getElementById('videoModal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target.id === 'videoModal') closeVideoModal();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideoModal();
+      });
     });
   </script>
-  TRANSMISSION PLAYBACK
 </body>
 </html>
