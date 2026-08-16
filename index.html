@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Alternate Effect | Multiverse & Speculative History Archive</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cyan: '#00f0ff',
+              purple: '#8b5cf6',
+              amber: '#f59e0b',
+              dark: '#0a0d14',
+              surface: '#111827',
+              border: '#1f2937'
+            }
+          },
+          fontFamily: {
+            mono: ['Courier New', 'Courier', 'monospace'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+    .glow-bg {
+      animation: pulse-glow 6s infinite ease-in-out;
+    }
+    .retro-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans min-h-screen retro-grid flex flex-col selection:bg-brand-cyan selection:text-black">
+
+  <!-- Glow Background Accents -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 left-1/4 w-96 h-96 bg-brand-cyan/15 rounded-full blur-3xl glow-bg"></div>
+    <div class="absolute top-1/2 -right-40 w-96 h-96 bg-brand-purple/15 rounded-full blur-3xl glow-bg" style="animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="relative z-10 border-b border-brand-border/80 bg-brand-dark/80 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center font-mono font-bold text-black text-lg">
+          ΔE
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-wider uppercase bg-gradient-to-r from-white via-slate-200 to-brand-cyan bg-clip-text text-transparent">The Alternate Effect</span>
+          <span class="text-xs text-brand-cyan/70 font-mono block -mt-1">// TIMELINE DIVERGENCE ENGINE</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <a href="#simulator" class="text-slate-300 hover:text-brand-cyan transition-colors">Fork Simulator</a>
+        <a href="#debates" class="text-slate-300 hover:text-brand-cyan transition-colors">Chrono-Debates</a>
+        <a href="#episodes" class="text-slate-300 hover:text-brand-cyan transition-colors">Episodes & Vault</a>
+        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" class="px-3.5 py-1.5 rounded-full bg-red-600/90 hover:bg-red-500 text-white font-semibold transition-all flex items-center space-x-1.5 shadow-lg shadow-red-600/20">
+          <i data-lucide="youtube" class="w-4 h-4"></i>
+          <span>Subscribe</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="relative z-10 flex-grow">
+    <section class="max-w-5xl mx-auto px-4 pt-16 pb-12 text-center">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-xs font-mono mb-6">
+        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+        <span>TEMPORAL STATUS: MULTIPLE DIVERGENCES DETECTED</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
+        History is fragile.<br />
+        <span class="bg-gradient-to-r from-brand-cyan via-purple-400 to-pink-500 bg-clip-text text-transparent">What happens when the thread snaps?</span>
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+        Investigating alternate histories, deep-time geological turning points, and the domino effects that could have reshaped civilization.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#simulator" class="px-6 py-3 rounded-lg bg-brand-cyan text-black font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-brand-cyan/25 flex items-center space-x-2">
+          <i data-lucide="git-branch" class="w-5 h-5"></i>
+          <span>Enter Timeline Weaver</span>
+        </a>
+        <a href="#episodes" class="px-6 py-3 rounded-lg border border-brand-border bg-brand-surface/60 hover:bg-brand-surface hover:border-slate-600 transition-all text-slate-200 font-semibold flex items-center space-x-2">
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
+          <span>Watch Archives</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 1: INTERACTIVE TIMELINE FORK SIMULATOR -->
+    <section id="simulator" class="max-w-5xl mx-auto px-4 py-12 scroll-mt-20">
+      <div class="border border-brand-border bg-brand-surface/80 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
+          <div class="flex items-center space-x-3">
+            <div class="p-2 rounded-lg bg-brand-purple/20 text-brand-purple">
+              <i data-lucide="split" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">Timeline Weaver Simulator</h2>
+              <p class="text-xs text-slate-400 font-mono">Select a historical pivot point to calculate downstream fallout</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 hidden sm:inline-block">
+            ACTIVE FORK ENGINE v2.6
+          </span>
+        </div>
+
+        <!-- Scenario Selector Chips -->
+        <div class="flex flex-wrap gap-2 mb-6" id="scenarioChips"></div>
+
+        <!-- Dynamic Output Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-brand-dark/90 rounded-xl p-6 border border-brand-border/60">
+          <div class="md:col-span-2 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-amber font-mono text-xs uppercase tracking-wider">
+              <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+              <span id="divergencePoint">Divergence Point</span>
+            </div>
+            <h3 id="scenarioTitle" class="text-2xl font-bold text-white">Select a scenario</h3>
+            <p id="scenarioDesc" class="text-slate-300 text-sm leading-relaxed"></p>
+
+            <div class="pt-2">
+              <h4 class="text-xs font-mono text-brand-cyan mb-2 uppercase tracking-wide">// 50-Year Downstream Cascades</h4>
+              <ul id="cascadeList" class="space-y-2 text-sm text-slate-300"></ul>
+            </div>
+          </div>
+
+          <!-- Meters & Metric Impacts -->
+          <div class="space-y-4 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6 flex flex-col justify-center">
+            <h4 class="text-xs font-mono text-slate-400 uppercase">// Projected Deviations</h4>
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span>Geopolitical Stability</span>
+                <span id="metricGeo" class="text-brand-cyan">--</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div id="barGeo" class="bg-brand-cyan h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span>Tech Acceleration</span>
+                <span id="metricTech" class="text-brand-purple">--</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div id="barTech" class="bg-brand-purple h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span>Global Population Impact</span>
+                <span id="metricPop" class="text-brand-amber">--</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div id="barPop" class="bg-brand-amber h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CHRONO-DEBATE & COMMUNITY VOTE -->
+    <section id="debates" class="max-w-5xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Interactive Poll Widget -->
+        <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur">
+          <div class="flex items-center space-x-2 text-brand-cyan font-mono text-xs mb-2">
+            <i data-lucide="vote" class="w-4 h-4"></i>
+            <span>COMMUNITY DIVERGENCE POLL #42</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">If China had not burnt the Treasure Fleets in 1433, who colonizes the Americas first?</h3>
+          <p class="text-xs text-slate-400 mb-4">Cast your vote to see real-time community probability metrics.</p>
+
+          <div class="space-y-2.5" id="pollOptions">
+            <button onclick="castVote(0)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+              <span>Ming Dynasty via Pacific Currents</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll0-pct">48%</span>
+            </button>
+            <button onclick="castVote(1)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+              <span>Western Europe (Historical Timeline)</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll1-pct">36%</span>
+            </button>
+            <button onclick="castVote(2)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
+              <span>Concurrent Split / Early Pacific Trade Network</span>
+              <span class="font-mono text-xs text-brand-cyan font-semibold" id="poll2-pct">16%</span>
+            </button>
+          </div>
+          <p id="voteConfirmation" class="text-xs text-emerald-400 font-mono mt-3 hidden">✓ Vote logged. Live consensus updated.</p>
+        </div>
+
+        <!-- Creator Scenario Suggestion Box -->
+        <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-2 text-brand-purple font-mono text-xs mb-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>TRANSMIT A TIMELINE PROMPT</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Pitch the Next Video Scenario</h3>
+            <p class="text-xs text-slate-400 mb-4">Have an alternate history fork or speculative catastrophe theory? Submit your premise to be covered in an upcoming episode.</p>
+            <textarea id="scenarioPitch" rows="3" placeholder="e.g., What if the Library of Alexandria survived with full archives intact?" class="w-full p-3 bg-brand-dark border border-brand-border rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-purple resize-none"></textarea>
+          </div>
+          <button onclick="submitPitch()" class="mt-4 w-full py-2.5 rounded-lg bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-semibold text-sm text-white transition-all shadow-md">
+            Transmit Proposal
+          </button>
+          <p id="pitchMsg" class="text-xs text-brand-cyan font-mono mt-2 text-center hidden">Transmission received and archived in the queue!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RECENT EPISODES & CLASSIFIED DOSSIERS -->
+    <section id="episodes" class="max-w-5xl mx-auto px-4 py-12">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-white">Timeline Archives</h2>
+          <p class="text-xs text-slate-400 font-mono">// EXPLORE LATEST TRANSMISSIONS & DISPATCHES</p>
+        </div>
+        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" class="text-xs font-mono text-brand-cyan hover:underline flex items-center space-x-1">
+          <span>View All on YouTube</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Video Card 1 -->
+        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group">
+          <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Pripyat / Chernobyl Alternate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" />
+            <a href="http://www.youtube.com/watch?v=ncTdV4wZCUo" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+              <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
+              </div>
+            </a>
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white font-mono text-xs px-2 py-0.5 rounded">6:04</span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-cyan uppercase">Nuclear History // Deep Speculation</span>
+            <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-cyan transition-colors">
+              What If Chernobyl Never Happened? — The City That Should Have Been
+            </h4>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Investigating the Soviet nuclear expansion plan, the trajectory of Pripyat as a mega-atomic hub, and the butterfly effects on the USSR's energy grid.
+            </p>
+            <a href="http://www.youtube.com/watch?v=ncTdV4wZCUo" target="_blank" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-300 hover:text-white">
+              <span>Watch on YouTube</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group">
+          <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Treasure Fleets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" />
+            <a href="http://www.youtube.com/watch?v=9Tdubw0POa8" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+              <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
+              </div>
+            </a>
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white font-mono text-xs px-2 py-0.5 rounded">0:59</span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-purple uppercase">Maritime Fork // 15th Century</span>
+            <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-purple transition-colors">
+              Why China Abandoned the Pacific (And What If They Didn't?)
+            </h4>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Zheng He's colossal armada ruled the Indian Ocean. What if the Haijin edict was never signed, and the Ming Dynasty reached the Americas first?
+            </p>
+            <a href="http://www.youtube.com/watch?v=9Tdubw0POa8" target="_blank" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-300 hover:text-white">
+              <span>Watch on YouTube</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-brand-border bg-brand-dark/95 py-8 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p>© 2026 The Alternate Effect. All parallel timelines reserved.</p>
+      <p class="text-slate-600">Simulations generated for speculative storytelling & historical analysis.</p>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Scenarios Data for Timeline Weaver
+    const scenarios = [
+      {
+        id: "chernobyl",
+        name: "Pripyat Unbroken",
+        divergence: "April 26, 1986 // Reactor 4 Test Nominal",
+        title: "The Nuclear Renaissance of Eastern Europe",
+        desc: "Without the catastrophic reactor failure, Pripyat grows into the model atomic city with 6 operational reactors. Global nuclear apprehension never reaches late-80s peak levels.",
+        cascades: [
+          "Soviet planned economy retains high energy output through the 1990s.",
+          "Global coal reliance drops 22% faster due to sustained nuclear expansion.",
+          "Alternative clean energy funding pivots towards fusion earlier."
+        ],
+        geo: "74% (High)",
+        geoVal: 74,
+        tech: "88% (Rapid)",
+        techVal: 88,
+        pop: "95% (Stable)",
+        popVal: 95
+      },
+      {
+        id: "ming",
+        name: "Pacific Armada",
+        divergence: "1433 AD // Haijin Edict Rejected",
+        title: "The Pacific Age & Ming Maritime Expansion",
+        desc: "The Ming dynasty doubles naval expeditions instead of scuttling the fleet, establishing sustained trade posts across the Pacific rim decades before Columbus sets sail.",
+        cascades: [
+          "Pacific spice and silver trade dominated by Chinese junk armadas.",
+          "Indigenous contact dynamics alter disease vectors and diplomatic treaties.",
+          "European Atlantic monopoly faces immediate Eastern competition."
+        ],
+        geo: "45% (Volatile)",
+        geoVal: 45,
+        tech: "79% (Accelerated)",
+        techVal: 79,
+        pop: "62% (Altered)",
+        popVal: 62
+      },
+      {
+        id: "toba",
+        name: "Toba Averted",
+        divergence: "74,000 BCE // Dormant Volcanism",
+        title: "No Genetic Bottleneck for Early Sapiens",
+        desc: "The Toba super-eruption fails to trigger a global volcanic winter. Homo sapiens population never plunges to 1,000–10,000 individuals, preserving immense genetic diversity.",
+        cascades: [
+          "Hominin coexistence with Neanderthals and Denisovans extends 20,000+ years.",
+          "Denser hunter-gatherer networks accelerate agricultural discovery by millennia.",
+          "Modern human genome maintains 4x higher genetic variation."
+        ],
+        geo: "30% (Fragmented)",
+        geoVal: 30,
+        tech: "65% (Early Dawn)",
+        techVal: 65,
+        pop: "100% (Dense)",
+        popVal: 100
+      }
+    ];
+
+    let activeScenario = scenarios[0];
+
+    function renderChips() {
+      const container = document.getElementById("scenarioChips");
+      container.innerHTML = scenarios.map((s, idx) => `
+        <button onclick="selectScenario('${s.id}')" class="px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${s.id === activeScenario.id ? 'bg-brand-cyan text-black font-bold shadow-md shadow-brand-cyan/20' : 'bg-brand-surface border border-brand-border text-slate-300 hover:border-slate-500'}">
+          // 0${idx+1}: ${s.name}
+        </button>
+      `).join('');
+    }
+
+    function selectScenario(id) {
+      activeScenario = scenarios.find(s => s.id === id);
+      renderChips();
+      updateSimulator();
+    }
+
+    function updateSimulator() {
+      document.getElementById("divergencePoint").innerText = activeScenario.divergence;
+      document.getElementById("scenarioTitle").innerText = activeScenario.title;
+      document.getElementById("scenarioDesc").innerText = activeScenario.desc;
+      
+      const list = document.getElementById("cascadeList");
+      list.innerHTML = activeScenario.cascades.map(item => `
+        <li class="flex items-start space-x-2">
+          <span class="text-brand-cyan font-bold">›</span>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      document.getElementById("metricGeo").innerText = activeScenario.geo;
+      document.getElementById("barGeo").style.width = activeScenario.geoVal + '%';
+
+      document.getElementById("metricTech").innerText = activeScenario.tech;
+      document.getElementById("barTech").style.width = activeScenario.techVal + '%';
+
+      document.getElementById("metricPop").innerText = activeScenario.pop;
+      document.getElementById("barPop").style.width = activeScenario.popVal + '%';
+    }
+
+    function castVote(optionIndex) {
+      document.getElementById("voteConfirmation").classList.remove("hidden");
+    }
+
+    function submitPitch() {
+      const val = document.getElementById("scenarioPitch").value;
+      if (val.trim()) {
+        document.getElementById("pitchMsg").classList.remove("hidden");
+        document.getElementById("scenarioPitch").value = "";
+      }
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      renderChips();
+      updateSimulator();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
