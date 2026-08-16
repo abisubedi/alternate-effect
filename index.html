@@ -30,6 +30,43 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
+    function openVideoModal(videoId) {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoIframe');
+  
+  // Load YouTube embed with autoplay enabled
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoIframe');
+  
+  // Stop video playback by clearing src
+  iframe.src = '';
+  
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close modal on outside backdrop click
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target.id === 'videoModal') {
+    closeVideoModal();
+  }
+});
+
+// Close modal on 'Escape' key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
+});
     tailwind.config = {
       darkMode: 'class',
       theme: {
