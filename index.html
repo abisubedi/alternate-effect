@@ -1,507 +1,324 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Alternate Effect | Multiverse & Speculative History Archive</title>
-  
-  <!-- SEO & Social Meta Tags -->
-  <meta name="description" content="Explore alternate history timelines, deep-time catastrophes, and speculative scenarios with the interactive Timeline Weaver." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://alternateeffect.netlify.app/" />
-  <meta property="og:title" content="The Alternate Effect | Timeline Divergence Engine" />
-  <meta property="og:description" content="What if history snapped? Simulate downstream cascades and vote on pivotal historical forks." />
-  <meta property="og:image" content="https://i.ytimg.com/vi/ncTdV4wZCUo/hqdefault.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+<title>The Alternate Effect</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0d12">
+<link rel="icon" href="avatar.jpg">
+<link rel="apple-touch-icon" href="avatar.jpg">
+<meta property="og:title" content="The Alternate Effect">
+<meta property="og:description" content="One decision. One different world. Alternate-timeline Shorts every week.">
+<meta property="og:image" content="https://alternateeffect.netlify.app/og.jpg">
+<meta property="og:url" content="https://alternateeffect.netlify.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="One decision. One different world. Alternate-timeline Shorts from The Alternate Effect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+  /* Layout: one narrow column over the cracked-clock key art; the link list is a timeline rail
+     running from 4.6 billion years ago down to today, each card stamped with when its timeline splits. */
+  :root {
+    --night: #0a0d12;
+    --panel: rgba(14, 17, 23, 0.78);
+    --panel-hover: rgba(24, 27, 34, 0.9);
+    --line: rgba(242, 179, 91, 0.28);
+    --fg: #f4ece0;
+    --muted: #b9ad9c;
+    --gold: #f2b35b;
+    --gold-hi: #ffe3a6;
+    --gold-lo: #c9822e;
+    --crimson: #c8242b;
+    --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+    --body: "Barlow", "Segoe UI", system-ui, sans-serif;
+    --label: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--night); }
+  body { margin: 0; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body {
+    background: var(--night);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.45;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .art {
+    position: fixed;
+    inset: 0;
+    background: url("bg.jpg") center top / cover no-repeat;
+    filter: saturate(1.05);
+    z-index: 0;
+  }
+  .art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10, 13, 18, 0.35) 0%, rgba(10, 13, 18, 0.82) 38%, var(--night) 78%);
+  }
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto;
+    padding-block: 40px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d14'/><text y='68' x='50' font-size='50' font-family='monospace' font-weight='bold' fill='%2300f0ff' text-anchor='middle'>ΔE</text></svg>">
+  /* Profile */
+  .profile { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .avatar {
+    width: 112px; height: 112px; border-radius: 50%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(242, 179, 91, 0.12), 0 12px 40px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
+  }
+  h1 {
+    margin: 6px 0 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(34px, 9vw, 46px);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 55%, var(--gold-lo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-wrap: balance;
+  }
+  .handle { font-family: var(--label); font-weight: 600; letter-spacing: 1.5px; color: var(--muted); font-size: 15px; }
+  .tagline { margin: 0; max-width: 34ch; color: var(--fg); font-size: 17px; }
+  .tagline strong { color: var(--gold); font-weight: 600; }
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              cyan: '#00f0ff',
-              purple: '#8b5cf6',
-              amber: '#f59e0b',
-              dark: '#0a0d14',
-              surface: '#111827',
-              border: '#1f2937'
-            }
-          },
-          fontFamily: {
-            mono: ['Courier New', 'Courier', 'monospace'],
-            sans: ['Inter', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.6; }
-    }
-    .glow-bg {
-      animation: pulse-glow 6s infinite ease-in-out;
-    }
-    .retro-grid {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    }
-  </style>
+  .follow {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 6px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: var(--crimson);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--label);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 28px rgba(200, 36, 43, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .follow svg { width: 20px; height: 20px; }
+  .follow:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(200, 36, 43, 0.5); }
+
+  .socials { display: flex; gap: 12px; justify-content: center; margin-top: 4px; }
+  .socials a {
+    width: 46px; height: 46px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--panel); border: 1px solid var(--line); color: var(--gold);
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  }
+  .socials a:hover { border-color: var(--gold); background: var(--panel-hover); transform: translateY(-1px); }
+  .socials svg { width: 22px; height: 22px; }
+
+  /* Timeline */
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  h2 {
+    margin: 0;
+    font-family: var(--label);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .scale { font-family: var(--label); font-size: 13px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; display: flex; flex-direction: column; gap: 12px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: 10px; bottom: 10px; width: 2px;
+    background: linear-gradient(180deg, var(--gold-lo), var(--gold) 50%, var(--crimson));
+    border-radius: 2px;
+  }
+  .timeline li { position: relative; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -21px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--night); border: 2px solid var(--gold);
+  }
+  .timeline li.now::before { border-color: var(--crimson); background: var(--crimson); }
+
+  .card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 6px 14px;
+    padding: 14px 16px 15px;
+    border-radius: 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--fg);
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+  }
+  .card:hover { background: var(--panel-hover); border-color: var(--gold); transform: translateX(2px); }
+  .when { grid-column: 1 / -1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; min-width: 0; }
+  .num {
+    font-family: var(--display);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
+  }
+  .unit { font-family: var(--label); font-weight: 600; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  .chip {
+    margin-left: auto;
+    font-family: var(--label); font-weight: 600; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px;
+    color: var(--night); background: var(--gold);
+  }
+  .q { font-size: 17px; font-weight: 500; line-height: 1.3; min-width: 0; text-wrap: balance; }
+  .go { color: var(--gold); font-family: var(--label); font-weight: 600; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+
+  /* Pick a side (comment prompt carried over from the old site's poll) */
+  .side {
+    display: flex; flex-direction: column; gap: 12px;
+    padding: 18px 16px; border-radius: 14px;
+    background: var(--panel); border: 1px solid var(--line);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .side .ask { margin: 0; font-family: var(--display); font-size: 24px; line-height: 1.12; letter-spacing: 0.3px; text-transform: uppercase; text-wrap: balance; }
+  .side .ask span { color: var(--gold); }
+  .picks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .picks li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 10px;
+    border: 1px solid rgba(244, 236, 224, 0.14);
+    font-weight: 500;
+  }
+  .picks b { font-family: var(--display); font-weight: 400; font-size: 18px; color: var(--gold); min-width: 1.2em; }
+  .side .go-btn {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 999px;
+    border: 1px solid var(--gold); color: var(--gold); text-decoration: none;
+    font-family: var(--label); font-weight: 600; font-size: 15px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .side .go-btn:hover { background: var(--gold); color: var(--night); }
+  .side .fine { margin: 0; font-size: 14px; color: var(--muted); }
+
+  .closing {
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding-top: 6px;
+  }
+  .closing p { margin: 0; color: var(--muted); max-width: 38ch; }
+  .closing .big { font-family: var(--display); font-size: 26px; letter-spacing: 0.5px; color: var(--fg); text-transform: uppercase; }
+  .closing .big span { color: var(--gold); }
+  footer { text-align: center; font-family: var(--label); font-size: 13px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+
+  a:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
 </head>
-<body class="bg-brand-dark text-slate-100 font-sans min-h-screen retro-grid flex flex-col selection:bg-brand-cyan selection:text-black">
+<body>
 
-  <!-- Background Ambient Glow -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-40 left-1/4 w-96 h-96 bg-brand-cyan/15 rounded-full blur-3xl glow-bg"></div>
-    <div class="absolute top-1/2 -right-40 w-96 h-96 bg-brand-purple/15 rounded-full blur-3xl glow-bg" style="animation-delay: 3s;"></div>
-  </div>
+<div class="art" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <header class="relative z-10 border-b border-brand-border/80 bg-brand-dark/80 backdrop-blur-md sticky top-0">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center font-mono font-bold text-black text-lg">
-          ΔE
-        </div>
-        <div>
-          <span class="font-bold text-lg tracking-wider uppercase bg-gradient-to-r from-white via-slate-200 to-brand-cyan bg-clip-text text-transparent">The Alternate Effect</span>
-          <span class="text-xs text-brand-cyan/70 font-mono block -mt-1">// TIMELINE DIVERGENCE ENGINE</span>
-        </div>
-      </div>
-
-      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="#simulator" class="text-slate-300 hover:text-brand-cyan transition-colors">Fork Simulator</a>
-        <a href="#debates" class="text-slate-300 hover:text-brand-cyan transition-colors">Chrono-Debates</a>
-        <a href="#episodes" class="text-slate-300 hover:text-brand-cyan transition-colors">Episodes</a>
-        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-red-600/90 hover:bg-red-500 text-white font-semibold transition-all flex items-center space-x-1.5 shadow-lg shadow-red-600/20">
-          <i data-lucide="youtube" class="w-4 h-4"></i>
-          <span>Subscribe</span>
-        </a>
-      </nav>
-    </div>
+<main class="wrap">
+  <header class="profile">
+    <img class="avatar" src="avatar.jpg" alt="The Alternate Effect logo: a cracked gold clock">
+    <h1>The Alternate Effect</h1>
+    <div class="handle">@THEALTERNATEEFFECT</div>
+    <p class="tagline">One decision. One different world. <strong>Pick a side</strong> in every timeline.</p>
+    <a class="follow" href="https://www.instagram.com/thealternateeffect/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      Follow on Instagram
+    </a>
+    <nav class="socials" aria-label="The Alternate Effect on social media">
+      <a href="https://www.instagram.com/thealternateeffect/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/thealternateeffect" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.9v3h2.6V21h3z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@thealternateeffect" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v2.6c-1.4.1-2.6-.3-3.9-1.1v5.5c0 3.4-2.5 5.9-5.8 5.9-3.2 0-5.6-2.4-5.6-5.5 0-3.4 2.9-5.9 6.5-5.4v2.8c-.4-.1-.7-.2-1.1-.2-1.5 0-2.6 1.1-2.6 2.6s1.1 2.6 2.6 2.6c1.6 0 2.7-1.1 2.7-3V3h3.3z"/></svg>
+      </a>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <main class="relative z-10 flex-grow">
-    <section class="max-w-5xl mx-auto px-4 pt-16 pb-12 text-center">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-xs font-mono mb-6">
-        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
-        <span>TEMPORAL STATUS: ACTIVE DIVERGENCES</span>
-      </div>
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-        History is fragile.<br />
-        <span class="bg-gradient-to-r from-brand-cyan via-purple-400 to-pink-500 bg-clip-text text-transparent">What happens when the thread snaps?</span>
-      </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-        Investigating alternate histories, deep-time geological turning points, and the cascading domino effects that could have reshaped our world.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#simulator" class="px-6 py-3 rounded-lg bg-brand-cyan text-black font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-brand-cyan/25 flex items-center space-x-2">
-          <i data-lucide="git-branch" class="w-5 h-5"></i>
-          <span>Enter Timeline Weaver</span>
-        </a>
-        <a href="#episodes" class="px-6 py-3 rounded-lg border border-brand-border bg-brand-surface/60 hover:bg-brand-surface hover:border-slate-600 transition-all text-slate-200 font-semibold flex items-center space-x-2">
-          <i data-lucide="play-circle" class="w-5 h-5"></i>
-          <span>Watch Archives</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- SECTION 1: TIMELINE FORK SIMULATOR -->
-    <section id="simulator" class="max-w-5xl mx-auto px-4 py-12 scroll-mt-20">
-      <div class="border border-brand-border bg-brand-surface/80 rounded-2xl p-6 sm:p-8 backdrop-blur shadow-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
-          <div class="flex items-center space-x-3">
-            <div class="p-2 rounded-lg bg-brand-purple/20 text-brand-purple">
-              <i data-lucide="split" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-white">Timeline Weaver Simulator</h2>
-              <p class="text-xs text-slate-400 font-mono">Select a historical pivot point to calculate downstream fallout</p>
-            </div>
-          </div>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 hidden sm:inline-block">
-            ACTIVE FORK ENGINE v2.6
-          </span>
-        </div>
-
-        <!-- Scenario Selector Buttons -->
-        <div class="flex flex-wrap gap-2 mb-6" id="scenarioChips"></div>
-
-        <!-- Dynamic Output Container -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-brand-dark/90 rounded-xl p-6 border border-brand-border/60">
-          <div class="md:col-span-2 space-y-4">
-            <div class="flex items-center space-x-2 text-brand-amber font-mono text-xs uppercase tracking-wider">
-              <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-              <span id="divergencePoint">Divergence Point</span>
-            </div>
-            <h3 id="scenarioTitle" class="text-2xl font-bold text-white">Loading...</h3>
-            <p id="scenarioDesc" class="text-slate-300 text-sm leading-relaxed"></p>
-
-            <div class="pt-2">
-              <h4 class="text-xs font-mono text-brand-cyan mb-2 uppercase tracking-wide">// 50-Year Downstream Cascades</h4>
-              <ul id="cascadeList" class="space-y-2 text-sm text-slate-300"></ul>
-            </div>
-          </div>
-
-          <!-- Metrics -->
-          <div class="space-y-4 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6 flex flex-col justify-center">
-            <h4 class="text-xs font-mono text-slate-400 uppercase">// Projected Deviations</h4>
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-1">
-                <span>Geopolitical Stability</span>
-                <span id="metricGeo" class="text-brand-cyan">--</span>
-              </div>
-              <div class="w-full bg-slate-800 rounded-full h-2">
-                <div id="barGeo" class="bg-brand-cyan h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-1">
-                <span>Tech Acceleration</span>
-                <span id="metricTech" class="text-brand-purple">--</span>
-              </div>
-              <div class="w-full bg-slate-800 rounded-full h-2">
-                <div id="barTech" class="bg-brand-purple h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs font-mono mb-1">
-                <span>Population Impact</span>
-                <span id="metricPop" class="text-brand-amber">--</span>
-              </div>
-              <div class="w-full bg-slate-800 rounded-full h-2">
-                <div id="barPop" class="bg-brand-amber h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: CHRONO-DEBATE & PITCH TRANSMISSION -->
-    <section id="debates" class="max-w-5xl mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Poll Widget -->
-        <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur">
-          <div class="flex items-center space-x-2 text-brand-cyan font-mono text-xs mb-2">
-            <i data-lucide="vote" class="w-4 h-4"></i>
-            <span>COMMUNITY DIVERGENCE POLL #42</span>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">If China had not scuttled the Treasure Fleets in 1433, who colonizes the Americas first?</h3>
-          <p class="text-xs text-slate-400 mb-4">Cast your vote to view community probability metrics.</p>
-
-          <div class="space-y-2.5">
-            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
-              <span>Ming Dynasty via Pacific Currents</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold">48%</span>
-            </button>
-            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
-              <span>Western Europe (Historical Baseline)</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold">36%</span>
-            </button>
-            <button onclick="castVote(this)" class="w-full text-left p-3 rounded-lg border border-brand-border bg-brand-dark/60 hover:border-brand-cyan transition-all text-sm flex justify-between items-center group">
-              <span>Concurrent Split / Early Pacific Trade</span>
-              <span class="font-mono text-xs text-brand-cyan font-semibold">16%</span>
-            </button>
-          </div>
-          <p id="voteConfirmation" class="text-xs text-emerald-400 font-mono mt-3 hidden">✓ Vote logged into consensus model.</p>
-        </div>
-
-        <!-- Scenario Pitch Form -->
-        <div class="border border-brand-border bg-brand-surface/60 rounded-xl p-6 backdrop-blur flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-2 text-brand-purple font-mono text-xs mb-2">
-              <i data-lucide="sparkles" class="w-4 h-4"></i>
-              <span>TRANSMIT A TIMELINE PROMPT</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Pitch the Next Video Scenario</h3>
-            <p class="text-xs text-slate-400 mb-4">Have an alternate history fork or speculative theory? Transmit it to the archive.</p>
-            <textarea id="scenarioPitch" rows="3" placeholder="e.g., What if the Library of Alexandria survived with full archives intact?" class="w-full p-3 bg-brand-dark border border-brand-border rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-purple resize-none"></textarea>
-          </div>
-          <button id="pitchBtn" onclick="submitPitch()" class="mt-4 w-full py-2.5 rounded-lg bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-semibold text-sm text-white transition-all shadow-md">
-            Transmit Proposal
-          </button>
-          <p id="pitchMsg" class="text-xs text-brand-cyan font-mono mt-2 text-center hidden"></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: RECENT EPISODES -->
-    <section id="episodes" class="max-w-5xl mx-auto px-4 py-12">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <h2 class="text-2xl font-bold text-white">Timeline Archives</h2>
-          <p class="text-xs text-slate-400 font-mono">// CLICK ANY TRANSMISSION TO PLAY IN THEATER MODE</p>
-        </div>
-        <a href="https://www.youtube.com/@AlternateEffect" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-brand-cyan hover:underline flex items-center space-x-1">
-          <span>View All on YouTube</span>
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-
-      <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Video Card 1 -->
-        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group flex flex-col justify-between">
-          <div>
-            <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-              <img src="https://i.ytimg.com/vi/ncTdV4wZCUo/hqdefault.jpg" alt="Chernobyl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80" loading="lazy" />
-              <button onclick="openVideoModal('ncTdV4wZCUo')" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all cursor-pointer">
-                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                  <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
-                </div>
-              </button>
-            </div>
-            <div class="p-5">
-              <span class="text-xs font-mono text-brand-cyan uppercase">Nuclear History // Deep Speculation</span>
-              <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-cyan transition-colors">
-                What If Chernobyl Never Happened? — The City That Should Have Been
-              </h4>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Investigating the Soviet nuclear expansion plan, Pripyat as a mega-atomic hub, and downstream energy grid cascades.
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <button onclick="openVideoModal('ncTdV4wZCUo')" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-brand-cyan hover:underline cursor-pointer">
-              <span>Play Video</span>
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Video Card 2 -->
-        <div class="border border-brand-border bg-brand-surface/40 hover:border-slate-600 rounded-xl overflow-hidden transition-all group flex flex-col justify-between">
-          <div>
-            <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-              <img src="https://i.ytimg.com/vi/9Tdubw0POa8/hqdefault.jpg" alt="Pacific Fleets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80" loading="lazy" />
-              <button onclick="openVideoModal('9Tdubw0POa8')" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all cursor-pointer">
-                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
-                  <i data-lucide="play" class="w-6 h-6 fill-current translate-x-0.5"></i>
-                </div>
-              </button>
-            </div>
-            <div class="p-5">
-              <span class="text-xs font-mono text-brand-purple uppercase">Maritime Fork // 15th Century</span>
-              <h4 class="text-base font-bold text-white mt-1 mb-2 group-hover:text-brand-purple transition-colors">
-                Why China Abandoned the Pacific (And What If They Didn't?)
-              </h4>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                What if Zheng He's colossal armada was never recalled, and the Ming Dynasty reached the Americas before 1492?
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <button onclick="openVideoModal('9Tdubw0POa8')" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-brand-purple hover:underline cursor-pointer">
-              <span>Play Video</span>
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Video Lightbox Modal -->
-  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="relative w-full max-w-4xl bg-brand-dark border border-brand-border rounded-2xl overflow-hidden shadow-2xl">
-      <div class="flex items-center justify-between px-4 py-3 border-b border-brand-border bg-brand-surface/80">
-        <span class="text-xs font-mono text-brand-cyan flex items-center space-x-1.5">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span>TRANSMISSION PLAYBACK</span>
-        </span>
-        <button onclick="closeVideoModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <div class="relative aspect-video w-full bg-black">
-        <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
+  <section aria-labelledby="tl-head">
+    <div class="section-head">
+      <h2 id="tl-head">Choose a timeline</h2>
+      <span class="scale">Deep past → today</span>
     </div>
-  </div>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
 
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-brand-border bg-brand-dark/95 py-8 text-center text-xs text-slate-500 font-mono">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <p>© 2026 The Alternate Effect. All parallel timelines reserved.</p>
-      <p class="text-slate-600">Simulations generated for speculative storytelling & historical analysis.</p>
-    </div>
-  </footer>
+  <section aria-labelledby="side-head" class="side">
+    <h2 id="side-head">Pick a side</h2>
+    <p class="ask">If the Ming kept its Treasure Fleet sailing after 1433, <span>who reaches the Americas first?</span></p>
+    <ul class="picks">
+      <li><b>A</b> The Ming Dynasty, across the Pacific</li>
+      <li><b>B</b> Western Europe, as it really happened</li>
+      <li><b>C</b> Both at once, with early Pacific trade</li>
+    </ul>
+    <a class="go-btn" href="https://www.instagram.com/reel/Db_7EBxCJ2V/" target="_blank" rel="noopener">Watch &amp; comment A, B or C →</a>
+    <p class="fine">Answers live in the comments on the episode.</p>
+  </section>
 
-  <!-- Core JavaScript Logic -->
-  <script>
-    // Scenarios Data
-    const scenarios = [
-      {
-        id: "chernobyl",
-        name: "Pripyat Unbroken",
-        divergence: "April 26, 1986 // Reactor 4 Nominal",
-        title: "The Nuclear Renaissance of Eastern Europe",
-        desc: "Without the catastrophic reactor failure, Pripyat grows into the model atomic city with 6 operational reactors. Global nuclear apprehension never reaches late-80s peak levels.",
-        cascades: [
-          "Soviet planned economy retains high energy output through the 1990s.",
-          "Global coal reliance drops 22% faster due to sustained nuclear expansion.",
-          "Alternative clean energy funding pivots towards fusion earlier."
-        ],
-        geo: "74% (High)",
-        geoVal: 74,
-        tech: "88% (Rapid)",
-        techVal: 88,
-        pop: "95% (Stable)",
-        popVal: 95
-      },
-      {
-        id: "ming",
-        name: "Pacific Armada",
-        divergence: "1433 AD // Haijin Edict Rejected",
-        title: "The Pacific Age & Ming Maritime Expansion",
-        desc: "The Ming dynasty doubles naval expeditions instead of scuttling the fleet, establishing sustained trade posts across the Pacific rim decades before Columbus sets sail.",
-        cascades: [
-          "Pacific spice and silver trade dominated by Chinese junk armadas.",
-          "Indigenous contact dynamics alter disease vectors and diplomatic treaties.",
-          "European Atlantic monopoly faces immediate Eastern competition."
-        ],
-        geo: "45% (Volatile)",
-        geoVal: 45,
-        tech: "79% (Accelerated)",
-        techVal: 79,
-        pop: "62% (Altered)",
-        popVal: 62
-      },
-      {
-        id: "toba",
-        name: "Toba Averted",
-        divergence: "74,000 BCE // Dormant Volcanism",
-        title: "No Genetic Bottleneck for Early Sapiens",
-        desc: "The Toba super-eruption fails to trigger a global volcanic winter. Homo sapiens population never plunges to 1,000–10,000 individuals, preserving immense genetic diversity.",
-        cascades: [
-          "Hominin coexistence with Neanderthals and Denisovans extends 20,000+ years.",
-          "Denser hunter-gatherer networks accelerate agricultural discovery by millennia.",
-          "Modern human genome maintains 4x higher genetic variation."
-        ],
-        geo: "30% (Fragmented)",
-        geoVal: 30,
-        tech: "65% (Early Dawn)",
-        techVal: 65,
-        pop: "100% (Dense)",
-        popVal: 100
-      }
-    ];
+  <section class="closing">
+    <div class="big">New timelines <span>every week</span></div>
+    <p>Every episode ends with a choice. Watch, then comment your side.</p>
+  </section>
 
-    let activeScenario = scenarios[0];
+  <footer>© 2026 The Alternate Effect</footer>
+</main>
 
-    function renderChips() {
-      const container = document.getElementById("scenarioChips");
-      if (!container) return;
-      container.innerHTML = scenarios.map((s, idx) => `
-        <button onclick="selectScenario('${s.id}')" class="px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer ${s.id === activeScenario.id ? 'bg-brand-cyan text-black font-bold shadow-md shadow-brand-cyan/20' : 'bg-brand-surface border border-brand-border text-slate-300 hover:border-slate-500'}">
-          // 0${idx+1}: ${s.name}
-        </button>
-      `).join('');
-    }
+<script>
+  // Ordered by when each timeline splits from ours. Links go to the original reels.
+  const TIMELINES = [
+    { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.instagram.com/reel/DdpjSjYFQ_4/", top: true },
+    { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.instagram.com/reel/DdhxR11gQz2/" },
+    { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.instagram.com/reel/Dd4rz44DvGp/", top: true },
+    { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.instagram.com/reel/DcSACzmDW1d/" },
+    { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.instagram.com/reel/DeXMvXmCVA-/", top: true },
+    { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.instagram.com/reel/DeZgZSGjHIM/", now: true },
+    { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.instagram.com/reel/DeeqEyfASnv/", now: true },
+    { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.instagram.com/reel/DehH8_qCJgI/", now: true, isNew: true },
+  ];
 
-    function selectScenario(id) {
-      activeScenario = scenarios.find(s => s.id === id) || scenarios[0];
-      renderChips();
-      updateSimulator();
-    }
+  const list = document.getElementById("timeline");
+  for (const t of TIMELINES) {
+    const li = document.createElement("li");
+    if (t.now) li.className = "now";
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = t.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    const chip = t.isNew ? '<span class="chip">New</span>' : t.top ? '<span class="chip">Most watched</span>' : "";
+    a.innerHTML =
+      `<span class="when"><span class="num">${t.num}</span>` +
+      (t.unit ? `<span class="unit">${t.unit}</span>` : "") + chip + `</span>` +
+      `<span class="q">${t.q}</span><span class="go">Watch →</span>`;
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+</script>
 
-    function updateSimulator() {
-      document.getElementById("divergencePoint").innerText = activeScenario.divergence;
-      document.getElementById("scenarioTitle").innerText = activeScenario.title;
-      document.getElementById("scenarioDesc").innerText = activeScenario.desc;
-      
-      const list = document.getElementById("cascadeList");
-      list.innerHTML = activeScenario.cascades.map(item => `
-        <li class="flex items-start space-x-2">
-          <span class="text-brand-cyan font-bold">›</span>
-          <span>${item}</span>
-        </li>
-      `).join('');
-
-      document.getElementById("metricGeo").innerText = activeScenario.geo;
-      document.getElementById("barGeo").style.width = activeScenario.geoVal + '%';
-
-      document.getElementById("metricTech").innerText = activeScenario.tech;
-      document.getElementById("barTech").style.width = activeScenario.techVal + '%';
-
-      document.getElementById("metricPop").innerText = activeScenario.pop;
-      document.getElementById("barPop").style.width = activeScenario.popVal + '%';
-    }
-
-    function castVote(btn) {
-      const confirmEl = document.getElementById("voteConfirmation");
-      if (confirmEl) confirmEl.classList.remove("hidden");
-    }
-
-    function submitPitch() {
-      const input = document.getElementById("scenarioPitch");
-      const msg = document.getElementById("pitchMsg");
-      if (input && input.value.trim()) {
-        msg.innerText = "✓ Transmission logged into the archive queue!";
-        msg.classList.remove("hidden");
-        input.value = "";
-      }
-    }
-
-    // Modal Handlers
-    function openVideoModal(videoId) {
-      const modal = document.getElementById('videoModal');
-      const iframe = document.getElementById('videoIframe');
-      if (modal && iframe) {
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const iframe = document.getElementById('videoIframe');
-      if (modal && iframe) {
-        iframe.src = '';
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
-    }
-
-    // Global Event Listeners
-    window.addEventListener('DOMContentLoaded', () => {
-      renderChips();
-      updateSimulator();
-      if (window.lucide) {
-        lucide.createIcons();
-      }
-
-      const modal = document.getElementById('videoModal');
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target.id === 'videoModal') closeVideoModal();
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeVideoModal();
-      });
-    });
-  </script>
 </body>
 </html>
