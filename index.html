@@ -152,17 +152,18 @@
   }
   .timeline li { position: relative; }
   .timeline li::before {
-    content: ""; position: absolute; left: -21px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
+    content: ""; position: absolute; left: -21px; top: 62px; width: 12px; height: 12px; border-radius: 50%;
     background: var(--night); border: 2px solid var(--gold);
   }
   .timeline li.now::before { border-color: var(--crimson); background: var(--crimson); }
 
   .card {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 6px 14px;
-    padding: 14px 16px 15px;
+    grid-template-columns: 76px 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 14px;
+    row-gap: 4px;
+    padding: 10px 14px 10px 10px;
     border-radius: 14px;
     background: var(--panel);
     border: 1px solid var(--line);
@@ -172,8 +173,28 @@
     -webkit-backdrop-filter: blur(6px);
     transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
   }
+  .thumb {
+    grid-row: 1 / -1;
+    position: relative;
+    width: 76px;
+    aspect-ratio: 9 / 16;
+    max-width: 100%;
+    border-radius: 9px;
+    overflow: hidden;
+    background: #000;
+    align-self: start;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.25s ease; }
+  .card:hover .thumb img { transform: scale(1.05); }
+  .play {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(10, 13, 18, 0.62); border: 1.5px solid var(--gold-hi);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play::after { content: ""; margin-left: 3px; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--gold-hi); }
   .card:hover { background: var(--panel-hover); border-color: var(--gold); transform: translateX(2px); }
-  .when { grid-column: 1 / -1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; min-width: 0; }
+  .when { display: flex; align-self: end; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; min-width: 0; }
   .num {
     font-family: var(--display);
     font-size: 30px;
@@ -190,6 +211,7 @@
     color: var(--night); background: var(--gold);
   }
   .q { font-size: 17px; font-weight: 500; line-height: 1.3; min-width: 0; text-wrap: balance; }
+  .go { align-self: start; }
   .go { color: var(--gold); font-family: var(--label); font-weight: 600; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
 
   /* Pick a side (comment prompt carried over from the old site's poll) */
@@ -199,6 +221,11 @@
     background: var(--panel); border: 1px solid var(--line);
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   }
+  .side-cover { position: relative; display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+  .side-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; transition: transform 0.25s ease; }
+  .side-cover:hover img { transform: scale(1.03); }
+  .side-cover .play { width: 46px; height: 46px; }
+  .side-cover .play::after { border-width: 9px 0 9px 15px; }
   .side .ask { margin: 0; font-family: var(--display); font-size: 24px; line-height: 1.12; letter-spacing: 0.3px; text-transform: uppercase; text-wrap: balance; }
   .side .ask span { color: var(--gold); }
   .picks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
@@ -270,6 +297,10 @@
 
   <section aria-labelledby="side-head" class="side">
     <h2 id="side-head">Pick a side</h2>
+    <a class="side-cover" href="https://www.instagram.com/reel/Db_7EBxCJ2V/" target="_blank" rel="noopener" aria-label="Watch the Zheng He episode on Instagram">
+      <img src="covers/Db_7EBxCJ2V.jpg" alt="Cover of the Zheng He treasure fleet episode" width="270" height="480" loading="lazy">
+      <span class="play"></span>
+    </a>
     <p class="ask">If the Ming kept its Treasure Fleet sailing after 1433, <span>who reaches the Americas first?</span></p>
     <ul class="picks">
       <li><b>A</b> The Ming Dynasty, across the Pacific</li>
@@ -291,14 +322,14 @@
 <script>
   // Ordered by when each timeline splits from ours. Links go to the original reels.
   const TIMELINES = [
-    { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.instagram.com/reel/DdpjSjYFQ_4/", top: true },
-    { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.instagram.com/reel/DdhxR11gQz2/" },
-    { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.instagram.com/reel/Dd4rz44DvGp/", top: true },
-    { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.instagram.com/reel/DcSACzmDW1d/" },
-    { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.instagram.com/reel/DeXMvXmCVA-/", top: true },
-    { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.instagram.com/reel/DeZgZSGjHIM/", now: true },
-    { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.instagram.com/reel/DeeqEyfASnv/", now: true },
-    { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.instagram.com/reel/DehH8_qCJgI/", now: true, isNew: true },
+    { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.instagram.com/reel/DdpjSjYFQ_4/", img: "covers/DdpjSjYFQ_4.jpg", top: true },
+    { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.instagram.com/reel/DdhxR11gQz2/", img: "covers/DdhxR11gQz2.jpg" },
+    { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.instagram.com/reel/Dd4rz44DvGp/", img: "covers/Dd4rz44DvGp.jpg", top: true },
+    { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.instagram.com/reel/DcSACzmDW1d/", img: "covers/DcSACzmDW1d.jpg" },
+    { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.instagram.com/reel/DeXMvXmCVA-/", img: "covers/DeXMvXmCVA-.jpg", top: true },
+    { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.instagram.com/reel/DeZgZSGjHIM/", img: "covers/DeZgZSGjHIM.jpg", now: true },
+    { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.instagram.com/reel/DeeqEyfASnv/", img: "covers/DeeqEyfASnv.jpg", now: true },
+    { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.instagram.com/reel/DehH8_qCJgI/", img: "covers/DehH8_qCJgI.jpg", now: true, isNew: true },
   ];
 
   const list = document.getElementById("timeline");
@@ -311,7 +342,9 @@
     a.target = "_blank";
     a.rel = "noopener";
     const chip = t.isNew ? '<span class="chip">New</span>' : t.top ? '<span class="chip">Most watched</span>' : "";
+    a.setAttribute("aria-label", `${t.q} (watch on Instagram)`);
     a.innerHTML =
+      `<span class="thumb"><img src="${t.img}" alt="" loading="lazy" width="270" height="480"><span class="play"></span></span>` +
       `<span class="when"><span class="num">${t.num}</span>` +
       (t.unit ? `<span class="unit">${t.unit}</span>` : "") + chip + `</span>` +
       `<span class="q">${t.q}</span><span class="go">Watch →</span>`;
