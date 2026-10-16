@@ -297,7 +297,7 @@
 
   <section aria-labelledby="side-head" class="side">
     <h2 id="side-head">Pick a side</h2>
-    <a class="side-cover" href="https://www.instagram.com/reel/Db_7EBxCJ2V/" target="_blank" rel="noopener" aria-label="Watch the Zheng He episode on Instagram">
+    <a class="side-cover" href="https://www.facebook.com/reel/1478165194049025/" target="_blank" rel="noopener" aria-label="Watch the Zheng He episode on Facebook">
       <img src="covers/Db_7EBxCJ2V.jpg" alt="Cover of the Zheng He treasure fleet episode" width="270" height="480" loading="lazy">
       <span class="play"></span>
     </a>
@@ -307,7 +307,7 @@
       <li><b>B</b> Western Europe, as it really happened</li>
       <li><b>C</b> Both at once, with early Pacific trade</li>
     </ul>
-    <a class="go-btn" href="https://www.instagram.com/reel/Db_7EBxCJ2V/" target="_blank" rel="noopener">Watch &amp; comment A, B or C →</a>
+    <a class="go-btn" href="https://www.facebook.com/reel/1478165194049025/" target="_blank" rel="noopener">Watch &amp; comment A, B or C →</a>
     <p class="fine">Answers live in the comments on the episode.</p>
   </section>
 
@@ -320,16 +320,16 @@
 </main>
 
 <script>
-  // Ordered by when each timeline splits from ours. Links go to the original reels.
+  // Ordered by when each timeline splits from ours. Links open each reel on Facebook (cover images are named by Instagram shortcode).
   const TIMELINES = [
-    { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.instagram.com/reel/DdpjSjYFQ_4/", img: "covers/DdpjSjYFQ_4.jpg", top: true },
-    { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.instagram.com/reel/DdhxR11gQz2/", img: "covers/DdhxR11gQz2.jpg" },
-    { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.instagram.com/reel/Dd4rz44DvGp/", img: "covers/Dd4rz44DvGp.jpg", top: true },
-    { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.instagram.com/reel/DcSACzmDW1d/", img: "covers/DcSACzmDW1d.jpg" },
-    { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.instagram.com/reel/DeXMvXmCVA-/", img: "covers/DeXMvXmCVA-.jpg", top: true },
-    { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.instagram.com/reel/DeZgZSGjHIM/", img: "covers/DeZgZSGjHIM.jpg", now: true },
-    { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.instagram.com/reel/DeeqEyfASnv/", img: "covers/DeeqEyfASnv.jpg", now: true },
-    { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.instagram.com/reel/DehH8_qCJgI/", img: "covers/DehH8_qCJgI.jpg", now: true, isNew: true },
+    { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.facebook.com/reel/1414255537325677/", img: "covers/DdpjSjYFQ_4.jpg", top: true },
+    { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.facebook.com/reel/1922076762034025/", img: "covers/DdhxR11gQz2.jpg" },
+    { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.facebook.com/reel/1390878889364984/", img: "covers/Dd4rz44DvGp.jpg", top: true },
+    { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.facebook.com/reel/4575996602678983/", img: "covers/DcSACzmDW1d.jpg" },
+    { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.facebook.com/reel/28377318601970178/", img: "covers/DeXMvXmCVA-.jpg", top: true },
+    { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.facebook.com/reel/1162983689727104/", img: "covers/DeZgZSGjHIM.jpg", now: true },
+    { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.facebook.com/reel/1094396649965620/", img: "covers/DeeqEyfASnv.jpg", now: true },
+    { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.facebook.com/reel/903635452703656/", img: "covers/DehH8_qCJgI.jpg", now: true, isNew: true },
   ];
 
   const list = document.getElementById("timeline");
@@ -342,7 +342,7 @@
     a.target = "_blank";
     a.rel = "noopener";
     const chip = t.isNew ? '<span class="chip">New</span>' : t.top ? '<span class="chip">Most watched</span>' : "";
-    a.setAttribute("aria-label", `${t.q} (watch on Instagram)`);
+    a.setAttribute("aria-label", `${t.q} (watch on Facebook)`);
     a.innerHTML =
       `<span class="thumb"><img src="${t.img}" alt="" loading="lazy" width="270" height="480"><span class="play"></span></span>` +
       `<span class="when"><span class="num">${t.num}</span>` +
