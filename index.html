@@ -320,19 +320,26 @@
 </main>
 
 <script>
-  // Ordered by when each timeline splits from ours. Links open each reel on Facebook (cover images are named by Instagram shortcode).
+  // Ordered by when each timeline splits from ours. Links open each reel on Facebook, or on Instagram where there's no Facebook link yet (cover images are named by Instagram shortcode).
   const TIMELINES = [
     { num: "4.6", unit: "billion years ago", q: "What if Jupiter had ignited into a star?", url: "https://www.facebook.com/reel/1414255537325677/", img: "covers/DdpjSjYFQ_4.jpg", top: true },
     { num: "4.5", unit: "billion years ago", q: "What if Earth had rings like Saturn?", url: "https://www.facebook.com/reel/1922076762034025/", img: "covers/DdhxR11gQz2.jpg" },
     { num: "2.4", unit: "billion years ago", q: "What if the Great Oxidation never happened?", url: "https://www.facebook.com/reel/1390878889364984/", img: "covers/Dd4rz44DvGp.jpg", top: true },
     { num: "375", unit: "million years ago", q: "What if the first fish never crawled onto land?", url: "https://www.facebook.com/reel/2608374456277905/", img: "covers/DekV4H7GzcR.jpg" },
+    { num: "200", unit: "million years ago", q: "What if Pangaea never broke apart?", url: "https://www.instagram.com/reel/DewdyqyjSLo/", img: "covers/DewdyqyjSLo.jpg" },
     { num: "66", unit: "million years ago", q: "Why humans wouldn't exist without that asteroid", url: "https://www.facebook.com/reel/4575996602678983/", img: "covers/DcSACzmDW1d.jpg" },
     { num: "40,000", unit: "years ago", q: "What if the Neanderthals never died out?", url: "https://www.facebook.com/reel/28377318601970178/", img: "covers/DeXMvXmCVA-.jpg", top: true },
     { num: "15,000", unit: "years ago", q: "What if wolves never became dogs?", url: "https://www.facebook.com/reel/1177360448577977/", img: "covers/DemKoqbiTMC.jpg" },
     { num: "23.5°", unit: "today", q: "What if Earth stood perfectly upright?", url: "https://www.facebook.com/reel/1162983689727104/", img: "covers/DeZgZSGjHIM.jpg", now: true },
     { num: "½ G", unit: "today", q: "What if Earth's gravity were cut in half?", url: "https://www.facebook.com/reel/1094396649965620/", img: "covers/DeeqEyfASnv.jpg", now: true },
     { num: "Tonight", unit: "", q: "What if the Moon vanished tonight?", url: "https://www.facebook.com/reel/903635452703656/", img: "covers/DehH8_qCJgI.jpg", now: true },
-    { num: "M20", unit: "today", q: "What if a magnitude 20 earthquake hit?", url: "https://www.facebook.com/thealternateeffect/reels", img: "covers/quake.jpg", now: true, isNew: true },
+    { num: "M20", unit: "today", q: "What if a magnitude 20 earthquake hit?", url: "https://www.instagram.com/reel/Deuv-Wsj6Eh/", img: "covers/quake.jpg", now: true },
+    { num: "0%", unit: "salt", q: "What if the oceans had no salt?", url: "https://www.instagram.com/reel/DerifO6j7CO/", img: "covers/DerifO6j7CO.jpg", now: true },
+    { num: "1 sec", unit: "without spin", q: "What if Earth stopped spinning for 1 second?", url: "https://www.instagram.com/reel/DezClLmjJKD/", img: "covers/DezClLmjJKD.jpg", now: true },
+    { num: "4 cm", unit: "a year, reversed", q: "What if the Moon crashed into Earth?", url: "https://www.instagram.com/reel/De1ghwsCD0O/", img: "covers/De1ghwsCD0O.jpg", now: true },
+    { num: "100,000", unit: "mph", q: "What if you fell into Jupiter?", url: "https://www.instagram.com/reel/De9m6RHAcXR/", img: "covers/De9m6RHAcXR.jpg", now: true },
+    { num: "1 year", unit: "off-world", q: "You must live on another planet for 1 year. Choose wisely.", url: "https://www.instagram.com/reel/DfAISNZDSMm/", img: "covers/DfAISNZDSMm.jpg", now: true },
+    { num: "2×", unit: "oxygen", q: "What if Earth's oxygen doubled?", url: "https://www.instagram.com/reel/DfCYgmHCch0/", img: "covers/DfCYgmHCch0.jpg", now: true, isNew: true },
   ];
 
   const list = document.getElementById("timeline");
